@@ -19,7 +19,7 @@ import_path = os.path.join(root_path, "Backend", "Tacotron2")
 sys.path.insert(0, import_path)
 
 from hparams import create_hparams
-from train import load_model
+from model import load_model
 from modules.layers import TacotronSTFT
 
 sys.path.pop(0)
