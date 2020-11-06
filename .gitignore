@@ -4,5 +4,5 @@
 venv/
 
 Logs/
-Data/*
-!Data/*.yaml
+data/*
+!data/*.yaml
