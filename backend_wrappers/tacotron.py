@@ -26,7 +26,8 @@ class Tacotron2Wrapper:
             _hparams = hparams_path
 
         self.hparams = create_hparams(_hparams)
-        _charset = _hparams.get("language", None) # обратная совместимость со старыми конфигами
+
+        _charset = self.hparams.get("language", None)  # обратная совместимость со старыми конфигами
         if _charset is not None:
             self.hparams.charset = _charset
         self.hparams.device = self.device
