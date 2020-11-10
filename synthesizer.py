@@ -145,7 +145,7 @@ class Synthesizer:
         file_path = os.path.join(path, name)
         soundfile.write(file_path, audio, self.sample_rate)
 
-        logger.info("Audio has been saved as {}".format(os.path.abspath(file_path)))
+        logger.info("Audio was saved as {}".format(os.path.abspath(file_path)))
 
         return file_path
 
@@ -171,8 +171,12 @@ class Synthesizer:
 
 
     def load_user_dict(self, user_dict):
+        data_dir = "data"
         if isinstance(user_dict, dict) or user_dict is None:
-            self._dict_source = "./data/{}_user_dict.json".format(self.name)
+            if not os.path.exists(data_dir):
+                os.makedirs(data_dir)
+                logger.info("Data folder was created along the path {}".format(os.path.abspath(data_dir)))
+            self._dict_source = os.path.join(data_dir, "{}_user_dict.json".format(self.name))
         else:
             self._dict_source = user_dict
         assert self._dict_source.endswith((".json", ".yaml"))
@@ -182,7 +186,7 @@ class Synthesizer:
 
 
     def get_user_dict(self):
-        logger.info("Request for the user dictionary has been received")
+        logger.info("Request for the user dictionary was received")
         return self.user_dict
 
 
