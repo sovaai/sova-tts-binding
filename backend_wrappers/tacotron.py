@@ -1,5 +1,3 @@
-import json
-
 import torch
 
 from hparams import create_hparams
@@ -19,7 +17,7 @@ class Tacotron2Wrapper:
         _checkpoint = torch.load(model_path, map_location=self.device)
         _hparams = _checkpoint.get("hparams", None)
         if _hparams is not None:
-            _hparams = json.loads(_hparams)
+            pass
         elif hparams_path is None:
             raise HparamsNotFound("The hparams dict is not presented either in a checkpoint or as a file.")
         else:
