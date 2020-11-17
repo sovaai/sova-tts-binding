@@ -241,7 +241,7 @@ class Synthesizer:
 
         for key, value in module_config.pop("options", {}).items():
             if value is not None:
-                modules_config[key] = value
+                module_config[key] = value
 
         return _modules_dict[mname](**module_config)
 
